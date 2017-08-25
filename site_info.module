@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ */
+
+function site_info_form_system_site_information_settings_alter(&$form, &$form_state, $form_id) {
+  $form['site_information']['siteapikey'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Site API Key'),
+    '#description' => t('Custom site API key.'),
+    '#default_value' => \Drupal::config('site_info.settings')->get('siteapikey'),
+  );
+  $form['#submit'][] = 'site_info_submit_handler';
+  $form['actions']['submit']['#value'] = t('Update Configuration');
+}
+
+/**
+ * Custom submit handler
+ */
+function site_info_submit_handler(&$form, Drupal\Core\Form\FormStateInterface $form_state) {
+  $siteapikey = $form_state->getValue('siteapikey');
+  $site_config = \Drupal::service('config.factory')->getEditable('site_info.settings');
+  $site_config->set('siteapikey', $siteapikey)->save();
+  if($site_config){
+    drupal_set_message(t('Site API Key has been updated.'), 'status');
+  }
+}

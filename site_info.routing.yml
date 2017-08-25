@@ -1,0 +1,7 @@
+site_info.json_page:
+  path: '/page-json/{siteapikey}/{node}'
+  defaults:
+    _controller: '\Drupal\site_info\Controller\JsonPageController::JsonPage'
+    _title: 'Custom JSON page'
+  requirements:
+    _permission: 'access content'

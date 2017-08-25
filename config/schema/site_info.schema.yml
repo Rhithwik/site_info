@@ -1,0 +1,8 @@
+# Schema for the configuration files of the Site Info module.
+site_info.settings:
+  type: mapping
+  label: 'Site information'
+  mapping:
+    siteapikey:
+      type: string
+      label: 'Site API Key.'

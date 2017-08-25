@@ -1,0 +1,7 @@
+name: Site Info
+description: Custom module to alter site Information.
+type: module
+package: Custom
+core: '8.x'
+version: '8.x-1.x-dev'
+datestamp: 1503508663
